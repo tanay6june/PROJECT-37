@@ -7,27 +7,27 @@ class Contestant{
 
    getCount(){
        var contestantCountRef = database.ref('contestantCount');
-       contestantCount.on("value",(data)=>{
+       contestantCountRef.on("value",(data)=>{
         contestantCount = data.val();
        }) 
    }
 
-   updataCount(count){
+   updateCount(count){
     database.ref('/').update({
     contestantCount: count
 });
 }
 
    update(){
-    var  contestantIndex = " contestants/ contestant" + this.index;
-    database.ref( contestantIndex).set({
+    var  contestantIndex = " contestants/contestant" + this.index;
+    database.ref(contestantIndex).set({
     name:this.name,
     answer:this.answer
 });
 }
 
    static getPlayerInfo(){
-    var  contestantInfoRef = database.ref(' contestant');
+    var  contestantInfoRef = database.ref('contestants');
     contestantInfoRef.on("value",(data)=>{
     allContestants = data.val();
 })
